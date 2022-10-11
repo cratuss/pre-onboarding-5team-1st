@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import React, { useState, useCallback } from 'react';
+import { FiPlay, FiSquare } from 'react-icons/fi';
 
 const Record = () => {
   const [stream, setStream] = useState();
@@ -36,14 +37,31 @@ const Record = () => {
   };
 
   return (
-    <>
-      {/* <RecordBlock>Record</RecordBlock>; */}
-      <button onClick={onRecAudio}>녹음</button>
-      <button>결과 확인</button>
-    </>
+    <RecordBlock>
+      <button onClick={onRecAudio}>
+        <FiPlay />
+      </button>
+      <button>
+        <FiSquare />
+      </button>
+    </RecordBlock>
   );
 };
 
-// const RecordBlock = styled.div``;
+const RecordBlock = styled.div`
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  width: 100%;
+  max-width: 640px;
+  padding-top: 100px;
+
+  button {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    border: transparent;
+  }
+`;
 
 export default Record;
