@@ -17,15 +17,13 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     min-width:375px;
+    max-width: 640px;
+    margin: 0 auto;
     background: #FFFFFF;
     color : #000000;
     font-family: 'Noto Sans KR', sans-serif;
-    .container{
 
-    }
   } 
-  
-  
 `;
 
 export default GlobalStyle;
