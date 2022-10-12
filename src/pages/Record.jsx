@@ -19,13 +19,12 @@ const Record = () => {
     function makeSound(stream) {
       const source = audioCtx.createMediaStreamSource(stream);
       setSource(source);
-
       source.connect(analyser);
       analyser.connect(audioCtx.destination);
     }
 
     navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
-      const mediaRecorder = newMediaRecorder(stream);
+      const mediaRecorder = new MediaRecorder(stream);
       mediaRecorder.start();
       setStream(stream);
       setMedia(mediaRecorder);
@@ -36,12 +35,36 @@ const Record = () => {
     });
   };
 
+  const offRecAudio = () => {
+    media.ondataavailable = function (e) {
+      setAudioUrl(e.data);
+      setOnRec(true);
+    };
+
+    stream.getAudioTracks().forEach(function (track) {
+      track.stop();
+    });
+
+    media.stop();
+
+    analyser.disconnect();
+    source.disconnect();
+  };
+
+  const onSubmitAudioFile = useCallback(() => {
+    if (audioUrl) {
+      console.log(URL.createObjectURL(audioUrl));
+    }
+    const sound = new File([audioUrl], 'audiofile', { lastModified: new Date().getTime(), type: 'audio' });
+    console.log(sound);
+  }, [audioUrl]);
+
   return (
     <RecordBlock>
-      <button onClick={onRecAudio}>
+      <button onClick={onRec ? onRecAudio : offRecAudio}>
         <FiPlay />
       </button>
-      <button>
+      <button onClick={onSubmitAudioFile}>
         <FiSquare />
       </button>
     </RecordBlock>
@@ -50,7 +73,8 @@ const Record = () => {
 
 const RecordBlock = styled.div`
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
+  justify-content: center;
   position: fixed;
   width: 100%;
   max-width: 640px;
@@ -59,6 +83,7 @@ const RecordBlock = styled.div`
   button {
     width: 70px;
     height: 70px;
+    margin: auto 20px;
     border-radius: 100%;
     border: transparent;
   }
