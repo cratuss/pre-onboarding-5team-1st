@@ -1,35 +1,32 @@
 import styled from 'styled-components';
+import axios from 'axios';
 import test from '../../assets/audio/test.mp3';
 
 const Download = () => {
   const downloadFile = url => {
-    url = test;
-
-    fetch(url, { method: 'GET' })
-      .then(res => {
-        return res.blob();
-      })
-      .then(blob => {
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'test';
-        document.body.appendChild(a);
-        a.click();
+    (async () => {
+      const apiUrl = url;
+      try {
+        const { data } = await axios(apiUrl, { responseType: 'blob' });
+        const fileUrl = window.URL.createObjectURL(data);
+        const link = document.createElement('a');
+        link.href = fileUrl;
+        link.download = `HAII_${apiUrl.slice(apiUrl.lastIndexOf('/') + 1, apiUrl.lastIndexOf('.'))}_${new Date().getTime()}`;
+        document.body.appendChild(link);
+        link.click();
         setTimeout(_ => {
-          window.URL.revokeObjectURL(url);
+          window.URL.revokeObjectURL(fileUrl);
         }, 60000);
-        a.remove();
-        setOpen(false);
-      })
-      .catch(err => {
-        console.error('err: ', err);
-      });
+        link.remove();
+      } catch (error) {
+        console.log(error);
+      }
+    })();
   };
 
   return (
     <DownloadBlock>
-      <button onClick={() => downloadFile()}>다운로드</button>
+      <button onClick={() => downloadFile(test)}>다운로드</button>
     </DownloadBlock>
   );
 };
