@@ -29,6 +29,9 @@ const AudioPlayer = ({ setPlaying, setTime }) => {
   );
 };
 
-const AudioPlayerBlock = styled.div``;
+const AudioPlayerBlock = styled.div`
+  padding-top: 10px;
+  box-shadow: 0 5px 5px -5px #ddd;
+`;
 
 export default AudioPlayer;

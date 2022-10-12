@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import axios from 'axios';
+import { FiDownload } from 'react-icons/fi';
 import test from '../../assets/audio/test.mp3';
 
 const Download = () => {
@@ -26,14 +27,31 @@ const Download = () => {
 
   return (
     <DownloadBlock>
-      <button onClick={() => downloadFile(test)}>다운로드</button>
+      <a onClick={() => downloadFile(test)}>
+        <span>다운로드</span>
+        <FiDownload />
+      </a>
     </DownloadBlock>
   );
 };
 
 const DownloadBlock = styled.div`
-  button {
+  a {
+    display: flex;
+    align-items: center;
     float: right;
+    padding-top: 15px;
+    border: none;
+    font-size: 18px;
+    color: #333;
+    background-color: transparent;
+    cursor: pointer;
+    svg {
+      margin-left: 5px;
+      vertical-align: bottom;
+      font-size: 18px;
+      color: #666;
+    }
   }
 `;
 

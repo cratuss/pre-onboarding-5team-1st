@@ -12,7 +12,7 @@ const AudioWave = ({ playing, time }) => {
 
   return (
     <AudioWaveBlock>
-      <Wavesurfer src={test} pos={position} playing={playing} volume={'0'} />
+      <Wavesurfer src={test} pos={position} playing={playing} volume={'0'} style={{ height: '50vh' }} />
     </AudioWaveBlock>
   );
 };
@@ -20,6 +20,7 @@ const AudioWave = ({ playing, time }) => {
 const AudioWaveBlock = styled.div`
   wave {
     pointer-events: none;
+    height: 30vh !important;
   }
 `;
 

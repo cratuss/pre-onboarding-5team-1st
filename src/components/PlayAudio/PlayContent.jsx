@@ -17,12 +17,6 @@ const PlayContent = () => {
   );
 };
 
-const PlayContentBlock = styled.div`
-  width: 100%;
-  min-height: 100vh;
-  padding-top: 80px;
-  padding-right: 16px;
-  padding-left: 16px;
-`;
+const PlayContentBlock = styled.div``;
 
 export default PlayContent;
