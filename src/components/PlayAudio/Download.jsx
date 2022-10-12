@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import axios from 'axios';
 import { FiDownload } from 'react-icons/fi';
-import test from '../../assets/audio/test.mp3';
+import aqualina from '../../assets/audio/aqualina.mp3';
 
 const Download = () => {
   const downloadFile = url => {
@@ -27,7 +27,7 @@ const Download = () => {
 
   return (
     <DownloadBlock>
-      <a onClick={() => downloadFile(test)}>
+      <a onClick={() => downloadFile(aqualina)}>
         <span>다운로드</span>
         <FiDownload />
       </a>

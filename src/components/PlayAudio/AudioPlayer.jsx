@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useRef } from 'react';
 import ReactAudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import test from '../../assets/audio/test.mp3';
+import aqualina from '../../assets/audio/aqualina.mp3';
 
 const AudioPlayer = ({ setPlaying, setTime }) => {
   const player = useRef();
@@ -11,7 +11,7 @@ const AudioPlayer = ({ setPlaying, setTime }) => {
     <AudioPlayerBlock>
       <ReactAudioPlayer
         style={{ boxShadow: 'none' }}
-        src={test}
+        src={aqualina}
         onPlay={() => {
           setPlaying(true);
         }}
