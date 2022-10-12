@@ -6,11 +6,12 @@ import Download from './Download';
 
 const PlayContent = () => {
   const [playing, setPlaying] = useState(false);
+  const [time, setTime] = useState(0);
 
   return (
     <PlayContentBlock>
-      <AudioWave playing={playing} />
-      <AudioPlayer setPlaying={setPlaying} />
+      <AudioWave playing={playing} time={time} />
+      <AudioPlayer setPlaying={setPlaying} setTime={setTime} />
       <Download />
     </PlayContentBlock>
   );

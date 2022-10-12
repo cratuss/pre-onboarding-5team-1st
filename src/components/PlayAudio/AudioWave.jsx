@@ -1,24 +1,18 @@
 import styled from 'styled-components';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Wavesurfer from 'react-wavesurfer.js';
 import test from '../../assets/audio/test.mp3';
 
-const AudioWave = ({ playing }) => {
+const AudioWave = ({ playing, time }) => {
   const [position, setPosition] = useState(0);
-  const [muted, setMuted] = useState(true);
-
-  const ref = useRef();
-
-  const handlePositionChange = position => {};
-  const onReadyHandler = e => {};
 
   useEffect(() => {
-    console.log(ref.current.state);
-  }, [playing]);
+    setPosition(time);
+  }, [time]);
 
   return (
     <AudioWaveBlock>
-      <Wavesurfer src={test} position={100} onPositionChange={handlePositionChange} onReady={onReadyHandler} playing={playing} volume={0} ref={ref} />
+      <Wavesurfer src={test} pos={position} playing={playing} volume={'0'} />
     </AudioWaveBlock>
   );
 };
