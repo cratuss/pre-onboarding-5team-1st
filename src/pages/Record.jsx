@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import React, { useState, useCallback, useRef } from 'react';
-// import { Recorder } from 'react-voice-recorder';
-// import 'react-voice-recorder/dist/index.css';
-import { FiSquare, FiMic, FiPause } from 'react-icons/fi';
+import { FiSquare, FiMic, FiPause, FiCircle } from 'react-icons/fi';
 
 const Record = () => {
   const [stream, setStream] = useState();
@@ -37,7 +35,6 @@ const Record = () => {
       makeSound(stream);
 
       analyser.onaudioprocess = function (e) {
-        // console.log(e.playbackTime);
         setTime(Math.trunc(e.playbackTime));
         // 2분(120초) 지나면 자동으로 녹음 중지
         if (e.playbackTime > 120) {
@@ -55,23 +52,15 @@ const Record = () => {
         } else {
           setOnRec(false);
         }
-        // console.log(time);
-        // console.log(e.playbackTime);
       };
     });
   };
 
-  //변수로 바꿔야하면 let
   function secToMin(d) {
     const m = Math.floor((d % 3600) / 60);
     const s = Math.floor((d % 3600) % 60);
 
-    // if (m < 10) {
-    //   m = `0${m}`;
-    // }
-
     const displayedTime = `${m < 10 ? '0' + m : m} : ${s < 10 ? '0' + s : s}`;
-    // const displayedTime = `${m}:${s}`;
     return displayedTime;
   }
 
@@ -106,36 +95,60 @@ const Record = () => {
 
   return (
     <RecordBlock>
-      {/* <Recorder /> */}
-      <p>{secToMin(time)}</p>
-      {/* <button>{onRec ? <FiMic /> : <FiMic />}</button> */}
-      <button onClick={onRec ? onRecAudio : offRecAudio}>{onRec ? <FiMic /> : <FiPause />}</button>
-      <button onClick={onSubmitAudioFile}>
-        <FiSquare />
-      </button>
+      <Recording>{onRec ? null : `REC`}</Recording>
+      <Timer>{secToMin(time)}</Timer>
+      <Buttons>
+        <button onClick={onRec ? onRecAudio : offRecAudio}>{onRec ? <FiMic /> : <FiPause />}</button>
+        <button onClick={onSubmitAudioFile}>
+          <FiSquare />
+        </button>
+      </Buttons>
     </RecordBlock>
   );
 };
 
 const RecordBlock = styled.div`
   display: flex;
-  /* justify-content: space-around; */
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
   width: 100%;
   min-height: 100vh;
   padding: 80px 16px 30px 16px;
+`;
 
+const Recording = styled.p`
+  position: absolute;
+  top: 80px;
+  right: 25%;
+  display: flex;
+  color: red;
+  animation: blinker 1.5s linear infinite;
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+  /* p {
+    margin-right: 5px;
+  } */
+`;
+
+const Timer = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 60px;
+`;
+
+const Buttons = styled.div`
   button {
     width: 70px;
     height: 70px;
     margin: auto 20px;
     border-radius: 100%;
     border: transparent;
+    cursor: pointer;
   }
 `;
-
-// const Recorder = styled.div`
-//   width: 50px;
-// `;
 
 export default Record;
