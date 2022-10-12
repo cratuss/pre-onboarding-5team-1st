@@ -1,10 +1,17 @@
 import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
 import PlayContent from '../components/PlayAudio/PlayContent';
 
 const PlayAudio = () => {
+  const location = useLocation();
+
+  const query = location.search;
+
+  const urlSearchParams = new URLSearchParams(query);
+
   return (
     <PlayAudioBlock>
-      <PlayContent />
+      <PlayContent fileUrl={urlSearchParams.get('importUrl')} fileTitle={urlSearchParams.get('title')} />
     </PlayAudioBlock>
   );
 };

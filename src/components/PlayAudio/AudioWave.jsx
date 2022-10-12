@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import Wavesurfer from 'react-wavesurfer.js';
-import aqualina from '../../assets/audio/aqualina.mp3';
 
-const AudioWave = ({ playing, time }) => {
+const AudioWave = ({ playing, time, fileUrl }) => {
   const [position, setPosition] = useState(0);
 
   useEffect(() => {
@@ -12,7 +11,7 @@ const AudioWave = ({ playing, time }) => {
 
   return (
     <AudioWaveBlock>
-      <Wavesurfer src={aqualina} pos={position} playing={playing} volume={'0'} style={{ height: '50vh' }} />
+      <Wavesurfer src={fileUrl} pos={position} playing={playing} volume={'0'} style={{ height: '50vh' }} />
     </AudioWaveBlock>
   );
 };

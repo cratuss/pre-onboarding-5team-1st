@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { FiVolume2 } from 'react-icons/fi';
 import { FiMoreVertical } from 'react-icons/fi';
 
-const RecordFile = ({ date, title, capacity }) => {
+const RecordFile = ({ date, title, capacity, importUrl }) => {
   const navigate = useNavigate();
   return (
     <RecordFileBlock>
       <div
         className='d-flex cursor'
         onClick={() => {
-          navigate('/play');
+          navigate(`/play?importUrl=${importUrl}&title=${title}`);
         }}
       >
         <span className='list-icon'>

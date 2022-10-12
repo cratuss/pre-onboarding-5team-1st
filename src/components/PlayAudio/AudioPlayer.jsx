@@ -2,16 +2,15 @@ import styled from 'styled-components';
 import { useRef } from 'react';
 import ReactAudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import aqualina from '../../assets/audio/aqualina.mp3';
 
-const AudioPlayer = ({ setPlaying, setTime }) => {
+const AudioPlayer = ({ setPlaying, setTime, fileUrl, fileTitle }) => {
   const player = useRef();
 
   return (
     <AudioPlayerBlock>
       <ReactAudioPlayer
-        style={{ boxShadow: 'none' }}
-        src={aqualina}
+        style={{ boxShadow: 'none', padding: '15px 0 0 0' }}
+        src={fileUrl}
         onPlay={() => {
           setPlaying(true);
         }}
@@ -19,7 +18,7 @@ const AudioPlayer = ({ setPlaying, setTime }) => {
         volume={1}
         progressUpdateInterval={20}
         progressJumpStep={5000}
-        header={'test.mp3'}
+        header={fileTitle}
         ref={player}
         listenInterval={1000}
         onSeeking={() => setTime(player.current.audio.current.currentTime)}
@@ -30,7 +29,6 @@ const AudioPlayer = ({ setPlaying, setTime }) => {
 };
 
 const AudioPlayerBlock = styled.div`
-  padding-top: 10px;
   box-shadow: 0 5px 5px -5px #ddd;
 `;
 
