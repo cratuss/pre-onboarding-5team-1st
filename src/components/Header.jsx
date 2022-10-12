@@ -54,10 +54,11 @@ const HeaderBlock = styled.div`
   position: fixed;
   width: 100%;
   max-width: 640px;
-  padding: 15px 16px;
+  padding: 18px 16px;
   color: #333;
   font-size: 18px;
   background: #fff;
+  box-shadow: 0 5px 5px -5px #ddd;
   .d-flex {
     display: flex;
     align-items: center;
