@@ -84,5 +84,5 @@ const RecordBlock = styled.div`
     border: transparent;
   }
 `;
-
+g
 export default Record;
