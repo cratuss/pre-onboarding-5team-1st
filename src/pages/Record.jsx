@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React, { useState, useCallback } from 'react';
-import { FiPlay, FiSquare } from 'react-icons/fi';
+import { FiPlay, FiSquare, FiMic } from 'react-icons/fi';
 
 const Record = () => {
   const [stream, setStream] = useState();
@@ -44,27 +44,24 @@ const Record = () => {
     stream.getAudioTracks().forEach(function (track) {
       track.stop();
     });
-
     media.stop();
 
     analyser.disconnect();
     source.disconnect();
   };
 
-  const onSubmitAudioFile = useCallback(() => {
-    if (audioUrl) {
-      console.log(URL.createObjectURL(audioUrl));
-    }
-    const sound = new File([audioUrl], 'audiofile', { lastModified: new Date().getTime(), type: 'audio' });
-    console.log(sound);
-  }, [audioUrl]);
+  // const onSubmitAudioFile = useCallback(() => {
+  //   if (audioUrl) {
+  //     console.log(URL.createObjectURL(audioUrl));
+  //   }
+  //   const sound = new File([audioUrl], 'audiofile', { lastModified: new Date().getTime(), type: 'audio' });
+  //   console.log(sound);
+  // }, [audioUrl]);
 
   return (
     <RecordBlock>
-      <button onClick={onRec ? onRecAudio : offRecAudio}>
-        <FiPlay />
-      </button>
-      <button onClick={onSubmitAudioFile}>
+      <button onClick={onRec ? onRecAudio : offRecAudio}>{onRec ? <FiPlay /> : <FiMic />}</button>
+      <button>
         <FiSquare />
       </button>
     </RecordBlock>
