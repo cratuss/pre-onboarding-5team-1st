@@ -50,18 +50,18 @@ const Record = () => {
     source.disconnect();
   };
 
-  // const onSubmitAudioFile = useCallback(() => {
-  //   if (audioUrl) {
-  //     console.log(URL.createObjectURL(audioUrl));
-  //   }
-  //   const sound = new File([audioUrl], 'audiofile', { lastModified: new Date().getTime(), type: 'audio' });
-  //   console.log(sound);
-  // }, [audioUrl]);
+  const onSubmitAudioFile = useCallback(() => {
+    if (audioUrl) {
+      console.log(URL.createObjectURL(audioUrl));
+    }
+    const sound = new File([audioUrl], 'soundblob', { lastModified: new Date().getTime(), type: 'audio' });
+    console.log(sound);
+  }, [audioUrl]);
 
   return (
     <RecordBlock>
       <button onClick={onRec ? onRecAudio : offRecAudio}>{onRec ? <FiPlay /> : <FiMic />}</button>
-      <button>
+      <button onClick={onSubmitAudioFile}>
         <FiSquare />
       </button>
     </RecordBlock>
@@ -72,10 +72,9 @@ const RecordBlock = styled.div`
   display: flex;
   /* justify-content: space-around; */
   justify-content: center;
-  position: fixed;
   width: 100%;
-  max-width: 640px;
-  padding-top: 100px;
+  min-height: 100vh;
+  padding: 80px 16px 30px 16px;
 
   button {
     width: 70px;
