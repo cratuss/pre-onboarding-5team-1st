@@ -53,6 +53,6 @@ const RecordList = () => {
 const RecordListBlock = styled.div`
   min-height: 100vh;
   padding: 65px 16px 30px;
-  text-align: center;
 `;
+
 export default RecordList;
