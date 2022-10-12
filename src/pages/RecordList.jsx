@@ -20,6 +20,6 @@ const RecordList = () => {
 };
 const RecordListBlock = styled.div`
   min-height: 100vh;
-  padding: 55px 16px 30px;
+  padding: 65px 16px 30px;
 `;
 export default RecordList;
