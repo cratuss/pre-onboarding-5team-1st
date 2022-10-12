@@ -39,8 +39,10 @@ const DownloadBlock = styled.div`
     display: flex;
     align-items: center;
     float: right;
-    padding-top: 15px;
-    border: none;
+    margin-top: 15px;
+    padding: 5px;
+    border: 1px solid #999;
+    border-radius: 5px;
     font-size: 18px;
     color: #333;
     background-color: transparent;

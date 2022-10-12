@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 
 const RecordList = () => {
   const [fileList, setFileList] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   // const FILE_LIST = [
   //   { title: '1번파일', date: '2022-10-12', capacity: '12.6MB' },
@@ -19,6 +20,7 @@ const RecordList = () => {
 
   useEffect(() => {
     (async () => {
+      setLoading(true);
       const fileUrl = [aqualina, Barradeen, GhostrifterOfficial];
       const axiosArray = [];
       try {
@@ -35,6 +37,7 @@ const RecordList = () => {
       } catch (error) {
         console.log(error);
       }
+      setLoading(false);
     })();
   }, []);
 
@@ -43,11 +46,13 @@ const RecordList = () => {
       {fileList.map(data => {
         return <RecordFile key={data.title} title={data.title} date={data.date} capacity={data.capacity} importUrl={data.importUrl} />;
       })}
+      {loading && <span>로딩중입니다.</span>}
     </RecordListBlock>
   );
 };
 const RecordListBlock = styled.div`
   min-height: 100vh;
   padding: 65px 16px 30px;
+  text-align: center;
 `;
 export default RecordList;
