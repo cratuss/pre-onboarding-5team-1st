@@ -107,6 +107,7 @@ const RecordBlock = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  position: relative;
   width: 100%;
   min-height: 100vh;
   padding: 80px 16px 30px 16px;
@@ -115,7 +116,7 @@ const RecordBlock = styled.div`
 const Recording = styled.div`
   position: absolute;
   top: 80px;
-  right: 25%;
+  right: 5%;
   display: flex;
   color: red;
   .on-recording {
