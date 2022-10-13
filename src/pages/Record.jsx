@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import React, { useState, useCallback, useRef } from 'react';
-import { FiSquare, FiMic, FiPause, FiCircle, FiStopCircle } from 'react-icons/fi';
+import React, { useState, useCallback } from 'react';
+import { FiMic, FiPause, FiCircle } from 'react-icons/fi';
 
 const Record = () => {
   const [stream, setStream] = useState();
