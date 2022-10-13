@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback } from 'react';
 import { FiSquare, FiMic, FiPause, FiCircle } from 'react-icons/fi';
 
 const Record = () => {

@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import axios from 'axios';
-import { FiVolume2 } from 'react-icons/fi';
-import { FiMoreVertical } from 'react-icons/fi';
 import RecordFile from '../components/RecordFile';
 import aqualina from '../assets/audio/aqualina.mp3';
 import Barradeen from '../assets/audio/Barradeen.mp3';
@@ -11,12 +9,6 @@ import { useEffect, useState } from 'react';
 const RecordList = () => {
   const [fileList, setFileList] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  // const FILE_LIST = [
-  //   { title: '1번파일', date: '2022-10-12', capacity: '12.6MB' },
-  //   { title: '2번파일', date: '2022-10-11', capacity: '15.9MB' },
-  //   { title: '3번파일', date: '2022-10-10', capacity: '403KB' },
-  // ];
 
   useEffect(() => {
     (async () => {

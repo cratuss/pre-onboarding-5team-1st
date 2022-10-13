@@ -22,7 +22,6 @@ const AudioPlayer = ({ setPlaying, setTime, fileUrl, fileTitle }) => {
         ref={player}
         listenInterval={1000}
         onSeeking={() => setTime(player.current.audio.current.currentTime)}
-        // other props here
       />
     </AudioPlayerBlock>
   );
@@ -30,6 +29,11 @@ const AudioPlayer = ({ setPlaying, setTime, fileUrl, fileTitle }) => {
 
 const AudioPlayerBlock = styled.div`
   box-shadow: 0 5px 5px -5px #ddd;
+
+  .rhap_controls-section {
+    margin-top: 20px;
+    padding: 10px;
+  }
 `;
 
 export default AudioPlayer;
