@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React, { useState, useCallback, useRef } from 'react';
-import { FiSquare, FiMic, FiPause, FiCircle } from 'react-icons/fi';
+import { FiSquare, FiMic, FiPause, FiCircle, FiStopCircle } from 'react-icons/fi';
 
 const Record = () => {
   const [stream, setStream] = useState();
@@ -85,13 +85,18 @@ const Record = () => {
 
   return (
     <RecordBlock>
-      <Recording>{onRec ? null : `REC`}</Recording>
+      <Recording>
+        {onRec ? null : (
+          <div className='on-recording'>
+            <p>REC</p>
+            <FiCircle />
+          </div>
+        )}
+      </Recording>
       <Timer>{secToMin(time)}</Timer>
       <Buttons>
         <button onClick={onRec ? onRecAudio : offRecAudio}>{onRec ? <FiMic /> : <FiPause />}</button>
-        <button onClick={onSubmitAudioFile}>
-          <FiSquare />
-        </button>
+        <button onClick={onSubmitAudioFile}>save</button>
       </Buttons>
     </RecordBlock>
   );
@@ -107,12 +112,18 @@ const RecordBlock = styled.div`
   padding: 80px 16px 30px 16px;
 `;
 
-const Recording = styled.p`
+const Recording = styled.div`
   position: absolute;
   top: 80px;
   right: 25%;
   display: flex;
   color: red;
+  .on-recording {
+    display: flex;
+  }
+  p {
+    margin-right: 5px;
+  }
   animation: blinker 1.5s linear infinite;
   @keyframes blinker {
     50% {
