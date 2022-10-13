@@ -105,6 +105,7 @@ npm run dev
 ### ✅ 프론트엔드 김슬기
 
 - 깃허브 https://github.com/sseul22
+- 블로그 https://velog.io/@sseul22
 
 ### ✅ 프론트엔드 이동호
 
