@@ -59,6 +59,7 @@ const HeaderBlock = styled.div`
   font-size: 18px;
   background: #fff;
   box-shadow: 0 5px 5px -5px #ddd;
+  z-index: 100;
   .d-flex {
     display: flex;
     align-items: center;
