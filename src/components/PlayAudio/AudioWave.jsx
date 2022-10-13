@@ -17,6 +17,7 @@ const AudioWave = ({ playing, time, fileUrl }) => {
 };
 
 const AudioWaveBlock = styled.div`
+  margin: 30px 0 30px 0;
   wave {
     pointer-events: none;
     height: 30vh !important;
