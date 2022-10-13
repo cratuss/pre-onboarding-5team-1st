@@ -71,7 +71,7 @@ npm run dev
 <br/>
 
 2. 브라우저에서 http://localhost:3000/pre-onboarding-5team-1st/ 로 접속하거나,
-[배포주소](https://cratuss.github.io/pre-onboarding-5team-1st/)로 접속해주시면 됩니다.
+[배포주소](https://pre-onboarding-5team-1st.netlify.app/)로 접속해주시면 됩니다.
 
    <br/>
    <br/>
